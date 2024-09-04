@@ -1,5 +1,6 @@
 package com.userscrud.users_crud_backend.service;
 
+import com.userscrud.users_crud_backend.exception.UserNotFoundException;
 import com.userscrud.users_crud_backend.model.User;
 import com.userscrud.users_crud_backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,9 @@ public class UserService {
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -26,5 +27,11 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public List<User> getAllUsers() {
         return userService.getAllUsers();
+    }
+
+    @GetMapping("/user/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    public User getUserById(@PathVariable Long userId) {
+        return userService.getUserById(userId);
     }
 }
