@@ -6,7 +6,7 @@ function Navbar() {
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Users CRUD Application</a>
+                    <Link className="navbar-brand" to="/">Users CRUD Application</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false"
