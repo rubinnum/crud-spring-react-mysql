@@ -50,7 +50,7 @@ function AddUser() {
                 </div>
             </div>
         </div>
-);
+    );
 }
 
 export default AddUser;
