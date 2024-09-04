@@ -34,4 +34,10 @@ public class UserController {
     public User getUserById(@PathVariable Long userId) {
         return userService.getUserById(userId);
     }
+
+    @PutMapping("/user/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    public User updateUserById(@PathVariable Long userId, @RequestBody User newUser) {
+        return userService.updateUserById(userId, newUser);
+    }
 }

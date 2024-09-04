@@ -25,4 +25,13 @@ public class UserService {
     public User getUserById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     }
+
+    public User updateUserById(Long id, User newUser) {
+        User user = getUserById(id);
+        user.setName(newUser.getName());
+        user.setUsername(newUser.getUsername());
+        user.setEmail(newUser.getEmail());
+        userRepository.save(user);
+        return user;
+    }
 }
