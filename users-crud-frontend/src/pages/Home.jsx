@@ -5,14 +5,19 @@ import {Link} from "react-router-dom";
 function Home() {
     const [users, setUsers] = useState([]);
 
-    const getAllUsers = async () => {
+    const loadAllUsers = async () => {
         const allUsers = await backend_api.get("/users");
         setUsers(allUsers.data);
     }
 
     useEffect(() => {
-        getAllUsers();
+        loadAllUsers();
     }, []);
+
+    const deleteUser = async (userId) => {
+        await backend_api.delete(`/user/${userId}`);
+        loadAllUsers();
+    }
 
     return (
         <div className='container'>
@@ -39,7 +44,7 @@ function Home() {
                                         <td>
                                             <button className="btn btn-primary mx-2">View</button>
                                             <Link className="btn btn-outline-primary mx-2" to={`/edituser/${user.id}`}>Edit</Link>
-                                            <button className="btn btn-danger mx-2">Delete</button>
+                                            <button className="btn btn-danger mx-2" onClick={() => deleteUser(user.id)}>Delete</button>
                                         </td>
                                     </tr>);
                         })}
